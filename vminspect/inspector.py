@@ -49,14 +49,18 @@ from vminspect.filesystem import FileSystem, hash_filesystem, posix_path
 def main():
     results = {}
     arguments = parse_arguments()
+    print("HERE")
 
     logging.basicConfig(level=arguments.debug and logging.DEBUG or logging.INFO)
     logging.getLogger('requests').setLevel(logging.WARNING)
+    logging.getLogger('urllib3').setLevel(logging.WARNING)
 
     results = COMMANDS[arguments.name](arguments)
 
-    if results is not None:
-        print(json.dumps(results, indent=2))
+    #if results is not None:
+        #print(json.dumps(results, indent=2))
+
+    print("EOF")
 
 
 def list_files_command(arguments):

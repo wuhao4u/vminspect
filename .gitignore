@@ -1,4 +1,5 @@
 .idea/
+sample-images/
 
 *.pyc
 __pycache__

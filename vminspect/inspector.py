@@ -60,8 +60,7 @@ def main():
 
 
 def list_files_command(arguments):
-    return list_files(arguments.disk, identify=arguments.identify,
-                      size=arguments.size)
+    return list_files(arguments.disk, identify=arguments.identify, size=arguments.size)
 
 
 def list_files(disk, identify=False, size=False):
@@ -397,6 +396,12 @@ def parse_arguments():
     return parser.parse_args()
 
 
+# list all the files contained within a disk image
+# Compare two disk images
+# Query Virustotal regarding the content of a disk.
+# Query a CVE database for vulnerable applications.
+# Extract event timelines of NTFS disks. Installation of 7Zip on Windows 7.
+# Parse Windows Event Log files.
 COMMANDS = {'list': list_files_command,
             'compare': compare_command,
             'registry': registry_command,

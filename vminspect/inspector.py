@@ -36,10 +36,12 @@ from pathlib import Path
 from collections import OrderedDict
 from tempfile import NamedTemporaryFile
 
-from vminspect.vtscan import VTScanner
+#from vminspect.vtscan import VTScanner
+from vtscan import VTScanner
 from vminspect.usnjrnl import usn_journal
 from vminspect.winevtx import WinEventLog
-from vminspect.vulnscan import VulnScanner
+#from vminspect.vulnscan import VulnScanner
+from vulnscan import VulnScanner
 from vminspect.comparator import DiskComparator
 from vminspect.timeline import FSTimeline, NTFSTimeline
 from vminspect.winreg import RegistryHive, registry_root
@@ -142,14 +144,19 @@ def extract_registry(filesystem, path):
 
 
 def vtscan_command(arguments):
+    print("I got your arguments")
+    print(arguments)
     with VTScanner(arguments.disk, arguments.apikey) as vtscanner:
         vtscanner.batchsize = arguments.batchsize
         filetypes = arguments.types and arguments.types.split(',') or None
 
-        return [r._asdict() for r in vtscanner.scan(filetypes=filetypes)]
+        vtscanner.scan(filetypes=filetypes)
+        # return [r._asdict() for r in vtscanner.scan(filetypes=filetypes)]
+        return []
 
 
 def vulnscan_command(arguments):
+    print("calling vulnscan")
     with VulnScanner(arguments.disk, arguments.url) as vulnscanner:
         return [r._asdict() for r in vulnscanner.scan(arguments.concurrency)]
 

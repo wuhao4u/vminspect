@@ -52,6 +52,7 @@ class VulnScanner:
         self._url = url.rstrip('/')
         self.logger = logging.getLogger(
             "%s.%s" % (self.__module__, self.__class__.__name__))
+        self.logger.setLevel(50)
 
     def __enter__(self):
         self._filesystem = FileSystem(self._disk)
@@ -84,10 +85,15 @@ class VulnScanner:
         """
         self.logger.debug("Scanning FS content.")
 
+        applications = self.applications()
+        print("#####application versions: ######")
+        for application in applications:
+            print(application.name + " : " + application.version + " : " + application.publisher)
+
         with ThreadPoolExecutor(max_workers=concurrency) as executor:
             results = executor.map(self.query_vulnerabilities,
                                    self.applications())
-
+        
         for report in results:
             application, vulnerabilities = report
             vulnerabilities = list(lookup_vulnerabilities(application.version,
@@ -103,14 +109,19 @@ class VulnScanner:
 
         name = application.name.lower()
         url = '/'.join((self._url, name, name))
+        # print("#####" + url + "######")
 
         response = requests.get(url)
         response.raise_for_status()
 
         return application, response.json()
 
+    def query_cve_info(self, cve_id):
+        # TODO: query cve database using http://cve.circl.lu/api/cve/CVE-2010-3333
+        pass
+
     def applications(self):
-        return (Application(a['app2_name'], a['app2_version'])
+        return (Application(a['app2_name'], a['app2_version'], a['app2_publisher'])
                 for a in self._filesystem.inspect_list_applications2(
                         self._filesystem._root))
 
@@ -132,6 +143,7 @@ VulnApp = namedtuple('VulnApp', ('name',
                                  'version',
                                  'vulnerabilities'))
 Application = namedtuple('Application', ('name',
-                                         'version'))
+                                         'version',
+                                         'publisher'))
 Vulnerability = namedtuple('Vulnerability', ('id',
                                              'summary'))

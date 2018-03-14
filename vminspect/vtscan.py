@@ -95,19 +95,28 @@ class VTScanner:
         in the detection field.
 
         """
+#        print("I'm here!1")
         self.logger.debug("Scanning FS content.")
-        checksums = self.filetype_filter(self._filesystem.checksums('/'),
-                                         filetypes=filetypes)
+        print(filetypes)
+        checksums = self.filetype_filter(self._filesystem.checksums('/'), filetypes=filetypes)
 
-        self.logger.debug("Querying %d objects to VTotal.", len(checksums))
+        print("I'm here!2")
+        # self.logger.debug("Querying %d objects to VTotal.", checksums)
+#        print("checksum: " + checksums)
 
         for files in chunks(checksums, size=self.batchsize):
             files = dict((reversed(e) for e in files))
+#            print("files: ", files)
+
             response = vtquery(self._apikey, files.keys())
 
-            yield from self.parse_response(files, response)
+#            yield from self.parse_response(files, response)
 
     def filetype_filter(self, files, filetypes=None):
+        print("#######")
+        print(type(files))
+        for f in files:
+            print(f)
         if filetypes is not None:
             return [f for f in files
                     if any((re.match(t, self._filesystem.file(f[0]))
@@ -148,11 +157,13 @@ def vtquery(apikey, checksums):
             'resource': isinstance(checksums, str) and checksums
                         or ', '.join(checksums)}
 
+    print(data)
     while 1:
         response = requests.post(VT_REPORT_URL, data=data)
         response.raise_for_status()
 
         if response.status_code == 200:
+#            print(response.json())
             return response.json()
         elif response.status_code == 204:
             logging.debug("API key request rate limit reached, throttling.")

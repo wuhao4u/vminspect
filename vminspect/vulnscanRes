@@ -1,0 +1,557 @@
+calling vulnscan
+#####application versions: ######
+accountsservice : 0.6.40
+acl : 2.2.52
+acpid : 1:2.0.26
+adduser : 3.113+nmu3ubuntu4
+apparmor : 2.10.95
+apport : 2.20.1
+apport-symptoms : 0.20
+apt : 1.2.24
+apt-transport-https : 1.2.24
+apt-utils : 1.2.24
+at : 3.1.18
+base-files : 9.4ubuntu4.5
+base-passwd : 3.5.39
+bash : 4.3
+bash-completion : 1:2.1
+bcache-tools : 1.0.8
+bind9-host : 1:9.10.3.dfsg.P4
+bsdmainutils : 9.0.6ubuntu3
+bsdutils : 1:2.27.1
+btrfs-tools : 4.4
+busybox-initramfs : 1:1.22.0
+busybox-static : 1:1.22.0
+byobu : 5.106
+bzip2 : 1.0.6
+ca-certificates : 20170717~16.04.1
+cloud-guest-utils : 0.27
+cloud-init : 0.7.9
+cloud-initramfs-copymods : 0.27ubuntu1.4
+cloud-initramfs-dyn-netconf : 0.27ubuntu1.4
+command-not-found : 0.3ubuntu16.04.2
+command-not-found-data : 0.3ubuntu16.04.2
+console-setup : 1.108ubuntu15.3
+console-setup-linux : 1.108ubuntu15.3
+coreutils : 8.25
+cpio : 2.11+dfsg
+cron : 3.0pl1
+cryptsetup : 2:1.6.6
+cryptsetup-bin : 2:1.6.6
+curl : 7.47.0
+dash : 0.5.8
+dbus : 1.10.6
+debconf : 1.5.58ubuntu1
+debconf-i18n : 1.5.58ubuntu1
+debianutils : 4.7
+dh-python : 2.20151103ubuntu1.1
+diffutils : 1:3.3
+distro-info-data : 0.28ubuntu0.3
+dmeventd : 2:1.02.110
+dmidecode : 3.0
+dmsetup : 2:1.02.110
+dns-root-data : 2015052300+h+1
+dnsmasq-base : 2.75
+dnsutils : 1:9.10.3.dfsg.P4
+dosfstools : 3.0.28
+dpkg : 1.18.4ubuntu1.2
+e2fslibs : 1.42.13
+e2fsprogs : 1.42.13
+eatmydata : 105
+ed : 1.10
+eject : 2.1.5+deb1+cvs20081104
+ethtool : 1:4.5
+file : 1:5.25
+findutils : 4.6.0+git+20160126
+fonts-ubuntu-font-family-console : 1:0.83
+friendly-recovery : 0.2.31
+ftp : 0.17
+fuse : 2.9.4
+gawk : 1:4.1.3+dfsg
+gcc-5-base : 5.4.0
+gcc-6-base : 6.0.1
+gdisk : 1.0.1
+geoip-database : 20160408
+gettext-base : 0.19.7
+gir1.2-glib-2.0 : 1.46.0
+git : 1:2.7.4
+git-man : 1:2.7.4
+gnupg : 1.4.20
+gpgv : 1.4.20
+grep : 2.25
+groff-base : 1.22.3
+grub-common : 2.02~beta2
+grub-gfxpayload-lists : 0.7
+grub-legacy-ec2 : 0.7.9
+grub-pc : 2.02~beta2
+grub-pc-bin : 2.02~beta2
+grub2-common : 2.02~beta2
+gzip : 1.6
+hdparm : 9.48+ds
+hostname : 3.16ubuntu2
+ifenslave : 2.7ubuntu1
+ifupdown : 0.8.10ubuntu1.2
+info : 6.1.0.dfsg.1
+init : 1.29ubuntu4
+init-system-helpers : 1.29ubuntu4
+initramfs-tools : 0.122ubuntu8.8
+initramfs-tools-bin : 0.122ubuntu8.8
+initramfs-tools-core : 0.122ubuntu8.8
+initscripts : 2.88dsf
+insserv : 1.14.0
+install-info : 6.1.0.dfsg.1
+iproute2 : 4.3.0
+iptables : 1.6.0
+iputils-ping : 3:20121221
+iputils-tracepath : 3:20121221
+irqbalance : 1.1.0
+isc-dhcp-client : 4.3.3
+isc-dhcp-common : 4.3.3
+iso-codes : 3.65
+kbd : 1.15.5
+keyboard-configuration : 1.108ubuntu15.3
+klibc-utils : 2.0.4
+kmod : 22
+krb5-locales : 1.13.2+dfsg
+language-selector-common : 0.165.4
+less : 481
+libaccountsservice0 : 0.6.40
+libacl1 : 2.2.52
+libapparmor-perl : 2.10.95
+libapparmor1 : 2.10.95
+libapt-inst2.0 : 1.2.24
+libapt-pkg5.0 : 1.2.24
+libasn1-8-heimdal : 1.7~git20150920+dfsg
+libasprintf0v5 : 0.19.7
+libatm1 : 1:2.5.1
+libattr1 : 1:2.4.47
+libaudit-common : 1:2.4.5
+libaudit1 : 1:2.4.5
+libbind9-140 : 1:9.10.3.dfsg.P4
+libblkid1 : 2.27.1
+libbsd0 : 0.8.2
+libbz2-1.0 : 1.0.6
+libc-bin : 2.23
+libc6 : 2.23
+libcap-ng0 : 0.7.7
+libcap2 : 1:2.24
+libcap2-bin : 1:2.24
+libcomerr2 : 1.42.13
+libcryptsetup4 : 2:1.6.6
+libcurl3-gnutls : 7.47.0
+libdb5.3 : 5.3.28
+libdbus-1-3 : 1.10.6
+libdbus-glib-1-2 : 0.106
+libdebconfclient0 : 0.198ubuntu1
+libdevmapper-event1.02.1 : 2:1.02.110
+libdevmapper1.02.1 : 2:1.02.110
+libdns-export162 : 1:9.10.3.dfsg.P4
+libdns162 : 1:9.10.3.dfsg.P4
+libdrm2 : 2.4.76
+libdumbnet1 : 1.12
+libeatmydata1 : 105
+libedit2 : 3.1
+libelf1 : 0.165
+liberror-perl : 0.17
+libestr0 : 0.1.10
+libevent-2.0-5 : 2.0.21
+libexpat1 : 2.1.0
+libfdisk1 : 2.27.1
+libffi6 : 3.2.1
+libfreetype6 : 2.6.1
+libfribidi0 : 0.19.7
+libfuse2 : 2.9.4
+libgcc1 : 1:6.0.1
+libgcrypt20 : 1.6.5
+libgdbm3 : 1.8.3
+libgeoip1 : 1.6.9
+libgirepository-1.0-1 : 1.46.0
+libglib2.0-0 : 2.48.2
+libglib2.0-data : 2.48.2
+libgmp10 : 2:6.1.0+dfsg
+libgnutls-openssl27 : 3.4.10
+libgnutls30 : 3.4.10
+libgpg-error0 : 1.21
+libgpm2 : 1.20.4
+libgssapi-krb5-2 : 1.13.2+dfsg
+libgssapi3-heimdal : 1.7~git20150920+dfsg
+libhcrypto4-heimdal : 1.7~git20150920+dfsg
+libheimbase1-heimdal : 1.7~git20150920+dfsg
+libheimntlm0-heimdal : 1.7~git20150920+dfsg
+libhogweed4 : 3.2
+libhx509-5-heimdal : 1.7~git20150920+dfsg
+libicu55 : 55.1
+libidn11 : 1.32
+libisc-export160 : 1:9.10.3.dfsg.P4
+libisc160 : 1:9.10.3.dfsg.P4
+libisccc140 : 1:9.10.3.dfsg.P4
+libisccfg140 : 1:9.10.3.dfsg.P4
+libjson-c2 : 0.11
+libk5crypto3 : 1.13.2+dfsg
+libkeyutils1 : 1.5.9
+libklibc : 2.0.4
+libkmod2 : 22
+libkrb5-26-heimdal : 1.7~git20150920+dfsg
+libkrb5-3 : 1.13.2+dfsg
+libkrb5support0 : 1.13.2+dfsg
+libldap-2.4-2 : 2.4.42+dfsg
+liblocale-gettext-perl : 1.07
+liblvm2app2.2 : 2.02.133
+liblvm2cmd2.02 : 2.02.133
+liblwres141 : 1:9.10.3.dfsg.P4
+liblxc1 : 2.0.8
+liblz4-1 : 0.0~r131
+liblzma5 : 5.1.1alpha+20120614
+liblzo2-2 : 2.08
+libmagic1 : 1:5.25
+libmnl0 : 1.0.3
+libmount1 : 2.27.1
+libmpdec2 : 2.4.2
+libmpfr4 : 3.1.4
+libmspack0 : 0.5
+libncurses5 : 6.0+20160213
+libncursesw5 : 6.0+20160213
+libnetfilter-conntrack3 : 1.0.5
+libnettle6 : 3.2
+libnewt0.52 : 0.52.18
+libnfnetlink0 : 1.0.1
+libnih1 : 1.0.3
+libnuma1 : 2.0.11
+libp11-kit0 : 0.23.2
+libpam-modules : 1.1.8
+libpam-modules-bin : 1.1.8
+libpam-runtime : 1.1.8
+libpam-systemd : 229
+libpam0g : 1.1.8
+libparted2 : 3.2
+libpcap0.8 : 1.7.4
+libpci3 : 1:3.3.1
+libpcre3 : 2:8.38
+libperl5.22 : 5.22.1
+libpipeline1 : 1.4.1
+libplymouth4 : 0.9.2
+libpng12-0 : 1.2.54
+libpolkit-agent-1-0 : 0.105
+libpolkit-backend-1-0 : 0.105
+libpolkit-gobject-1-0 : 0.105
+libpopt0 : 1.16
+libprocps4 : 2:3.3.10
+libpython3-stdlib : 3.5.1
+libpython3.5 : 3.5.2
+libpython3.5-minimal : 3.5.2
+libpython3.5-stdlib : 3.5.2
+libreadline5 : 5.2+dfsg
+libreadline6 : 6.3
+libroken18-heimdal : 1.7~git20150920+dfsg
+librtmp1 : 2.4+20151223.gitfa8646d
+libsasl2-2 : 2.1.26.dfsg1
+libsasl2-modules : 2.1.26.dfsg1
+libsasl2-modules-db : 2.1.26.dfsg1
+libseccomp2 : 2.2.3
+libselinux1 : 2.4
+libsemanage-common : 2.3
+libsemanage1 : 2.3
+libsepol1 : 2.4
+libsigsegv2 : 2.10
+libslang2 : 2.3.0
+libsmartcols1 : 2.27.1
+libsqlite3-0 : 3.11.0
+libss2 : 1.42.13
+libssl1.0.0 : 1.0.2g
+libstdc++6 : 5.4.0
+libsystemd0 : 229
+libtasn1-6 : 4.7
+libtext-charwidth-perl : 0.04
+libtext-iconv-perl : 1.7
+libtext-wrapi18n-perl : 0.06
+libtinfo5 : 6.0+20160213
+libudev1 : 229
+libusb-0.1-4 : 2:0.1.12
+libusb-1.0-0 : 2:1.0.20
+libustr-1.0-1 : 1.0.4
+libutempter0 : 1.1.6
+libuuid1 : 2.27.1
+libwind0-heimdal : 1.7~git20150920+dfsg
+libwrap0 : 7.6.q
+libx11-6 : 2:1.6.3
+libx11-data : 2:1.6.3
+libxau6 : 1:1.0.8
+libxcb1 : 1.11.1
+libxdmcp6 : 1:1.1.2
+libxext6 : 2:1.3.3
+libxml2 : 2.9.3+dfsg1
+libxmuu1 : 2:1.1.2
+libxtables11 : 1.6.0
+libyaml-0-2 : 0.1.6
+linux-base : 4.0ubuntu1
+linux-headers-4.4.0-96 : 4.4.0
+linux-headers-4.4.0-96-generic : 4.4.0
+linux-headers-generic : 4.4.0.96.101
+linux-headers-virtual : 4.4.0.96.101
+linux-image-4.4.0-96-generic : 4.4.0
+linux-image-virtual : 4.4.0.96.101
+linux-virtual : 4.4.0.96.101
+locales : 2.23
+login : 1:4.2
+logrotate : 3.8.7
+lsb-base : 9.20160110ubuntu0.2
+lsb-release : 9.20160110ubuntu0.2
+lshw : 02.17
+lsof : 4.89+dfsg
+ltrace : 0.7.3
+lvm2 : 2.02.133
+lxc-common : 2.0.8
+lxcfs : 2.0.7
+lxd : 2.0.10
+lxd-client : 2.0.10
+makedev : 2.3.1
+man-db : 2.7.5
+manpages : 4.04
+mawk : 1.3.3
+mdadm : 3.3
+mime-support : 3.59ubuntu1
+mlocate : 0.26
+mount : 2.27.1
+mtr-tiny : 0.86
+multiarch-support : 2.23
+nano : 2.5.3
+ncurses-base : 6.0+20160213
+ncurses-bin : 6.0+20160213
+ncurses-term : 6.0+20160213
+net-tools : 1.60
+netbase : 5.3
+netcat-openbsd : 1.105
+ntfs-3g : 1:2015.3.14AR.1
+open-iscsi : 2.0.873+git0.3b4b4500
+open-vm-tools : 2:10.0.7
+openssh-client : 1:7.2p2
+openssh-server : 1:7.2p2
+openssh-sftp-server : 1:7.2p2
+openssl : 1.0.2g
+os-prober : 1.70ubuntu3.3
+overlayroot : 0.27ubuntu1.4
+parted : 3.2
+passwd : 1:4.2
+pastebinit : 1.5
+patch : 2.7.5
+pciutils : 1:3.3.1
+perl : 5.22.1
+perl-base : 5.22.1
+perl-modules-5.22 : 5.22.1
+plymouth : 0.9.2
+plymouth-theme-ubuntu-text : 0.9.2
+policykit-1 : 0.105
+pollinate : 4.25
+popularity-contest : 1.64ubuntu2
+powermgmt-base : 1.31+nmu1
+procps : 2:3.3.10
+psmisc : 22.21
+python-apt-common : 1.1.0~beta1build1
+python3 : 3.5.1
+python3-apport : 2.20.1
+python3-apt : 1.1.0~beta1build1
+python3-blinker : 1.3.dfsg2
+python3-cffi-backend : 1.5.2
+python3-chardet : 2.3.0
+python3-commandnotfound : 0.3ubuntu16.04.2
+python3-configobj : 5.0.6
+python3-cryptography : 1.2.3
+python3-dbus : 1.2.0
+python3-debian : 0.1.27ubuntu2
+python3-distupgrade : 1:16.04.22
+python3-gdbm : 3.5.1
+python3-gi : 3.20.0
+python3-idna : 2.0
+python3-jinja2 : 2.8
+python3-json-pointer : 1.9
+python3-jsonpatch : 1.19
+python3-jwt : 1.3.0
+python3-markupsafe : 0.23
+python3-minimal : 3.5.1
+python3-newt : 0.52.18
+python3-oauthlib : 1.0.3
+python3-pkg-resources : 20.7.0
+python3-prettytable : 0.7.2
+python3-problem-report : 2.20.1
+python3-pyasn1 : 0.1.9
+python3-pycurl : 7.43.0
+python3-requests : 2.9.1
+python3-serial : 3.0.1
+python3-six : 1.10.0
+python3-software-properties : 0.96.20.7
+python3-systemd : 231
+python3-update-manager : 1:16.04.9
+python3-urllib3 : 1.13.1
+python3-yaml : 3.11
+python3.5 : 3.5.2
+python3.5-minimal : 3.5.2
+readline-common : 6.3
+rename : 0.20
+resolvconf : 1.78ubuntu4
+rsync : 3.1.1
+rsyslog : 8.16.0
+run-one : 1.17
+screen : 4.3.1
+sed : 4.2.2
+sensible-utils : 0.0.9
+sgml-base : 1.26+nmu4ubuntu1
+shared-mime-info : 1.5
+snapd : 2.27.5
+software-properties-common : 0.96.20.7
+sosreport : 3.4
+squashfs-tools : 1:4.3
+ssh-import-id : 5.5
+strace : 4.11
+sudo : 1.8.16
+systemd : 229
+systemd-sysv : 229
+sysv-rc : 2.88dsf
+sysvinit-utils : 2.88dsf
+tar : 1.28
+tcpd : 7.6.q
+tcpdump : 4.9.2
+telnet : 0.17
+time : 1.7
+tmux : 2.1
+tzdata : 2016j
+ubuntu-cloudimage-keyring : 2013.11.11
+ubuntu-core-launcher : 2.27.5
+ubuntu-keyring : 2012.05.19
+ubuntu-minimal : 1.361
+ubuntu-release-upgrader-core : 1:16.04.22
+ubuntu-server : 1.361
+ubuntu-standard : 1.361
+ucf : 3.0036
+udev : 229
+ufw : 0.35
+uidmap : 1:4.2
+unattended-upgrades : 0.90ubuntu0.8
+update-manager-core : 1:16.04.9
+update-notifier-common : 3.168.5
+ureadahead : 0.100.0
+usbutils : 1:007
+util-linux : 2.27.1
+uuid-runtime : 2.27.1
+vim : 2:7.4.1689
+vim-common : 2:7.4.1689
+vim-runtime : 2:7.4.1689
+vim-tiny : 2:7.4.1689
+vlan : 1.9
+wget : 1.17.1
+whiptail : 0.52.18
+xauth : 1:1.0.9
+xdg-user-dirs : 0.15
+xfsprogs : 4.3.0+nmu1ubuntu1.1
+xkb-data : 2.16
+xml-core : 0.13+nmu2
+xz-utils : 5.1.1alpha+20120614
+zerofree : 1.0.3
+zlib1g : 1:1.2.8.dfsg
+[
+  {
+    "name": "openssl",
+    "version": "1.0.2g",
+    "vulnerabilities": [
+      [
+        "CVE-2017-3738",
+        "There is an overflow bug in the AVX2 Montgomery multiplication procedure used in exponentiation with 1024-bit moduli. No EC algorithms are affected. Analysis suggests that attacks against RSA and DSA as a result of this defect would be very difficult to perform and are not believed likely. Attacks against DH1024 are considered just feasible, because most of the work necessary to deduce information about a private key may be performed offline. The amount of resources required for such an attack would be significant. However, for an attack on TLS to be meaningful, the server would have to share the DH1024 private key among multiple clients, which is no longer an option since CVE-2016-0701. This only affects processors that support the AVX2 but not ADX extensions like Intel Haswell (4th generation). Note: The impact from this issue is similar to CVE-2017-3736, CVE-2017-3732 and CVE-2015-3193. OpenSSL version 1.0.2-1.0.2m and 1.1.0-1.1.0g are affected. Fixed in OpenSSL 1.0.2n. Due to the low severity of this issue we are not issuing a new release of OpenSSL 1.1.0 at this time. The fix will be included in OpenSSL 1.1.0h when it becomes available. The fix is also available in commit e502cc86d in the OpenSSL git repository."
+      ],
+      [
+        "CVE-2017-3737",
+        "OpenSSL 1.0.2 (starting from version 1.0.2b) introduced an \"error state\" mechanism. The intent was that if a fatal error occurred during a handshake then OpenSSL would move into the error state and would immediately fail if you attempted to continue the handshake. This works as designed for the explicit handshake functions (SSL_do_handshake(), SSL_accept() and SSL_connect()), however due to a bug it does not work correctly if SSL_read() or SSL_write() is called directly. In that scenario, if the handshake fails then a fatal error will be returned in the initial function call. If SSL_read()/SSL_write() is subsequently called by the application for the same SSL object then it will succeed and the data is passed without being decrypted/encrypted directly from the SSL/TLS record layer. In order to exploit this issue an application bug would have to be present that resulted in a call to SSL_read()/SSL_write() being issued after having already received a fatal error. OpenSSL version 1.0.2b-1.0.2m are affected. Fixed in OpenSSL 1.0.2n. OpenSSL 1.1.0 is not affected."
+      ],
+      [
+        "CVE-2016-8610",
+        "A denial of service flaw was found in OpenSSL 0.9.8, 1.0.1, 1.0.2 through 1.0.2h, and 1.1.0 in the way the TLS/SSL protocol defined processing of ALERT packets during a connection handshake. A remote attacker could use this flaw to make a TLS/SSL server consume an excessive amount of CPU and fail to accept connections from other clients."
+      ],
+      [
+        "CVE-2016-2107",
+        "The AES-NI implementation in OpenSSL before 1.0.1t and 1.0.2 before 1.0.2h does not consider memory allocation during a certain padding check, which allows remote attackers to obtain sensitive cleartext information via a padding-oracle attack against an AES CBC session. NOTE: this vulnerability exists because of an incorrect fix for CVE-2013-0169."
+      ],
+      [
+        "CVE-2016-2182",
+        "The BN_bn2dec function in crypto/bn/bn_print.c in OpenSSL before 1.1.0 does not properly validate division results, which allows remote attackers to cause a denial of service (out-of-bounds write and application crash) or possibly have unspecified other impact via unknown vectors."
+      ],
+      [
+        "CVE-2016-2176",
+        "The X509_NAME_oneline function in crypto/x509/x509_obj.c in OpenSSL before 1.0.1t and 1.0.2 before 1.0.2h allows remote attackers to obtain sensitive information from process stack memory or cause a denial of service (buffer over-read) via crafted EBCDIC ASN.1 data."
+      ],
+      [
+        "CVE-2016-2109",
+        "The asn1_d2i_read_bio function in crypto/asn1/a_d2i_fp.c in the ASN.1 BIO implementation in OpenSSL before 1.0.1t and 1.0.2 before 1.0.2h allows remote attackers to cause a denial of service (memory consumption) via a short invalid encoding."
+      ],
+      [
+        "CVE-2016-2106",
+        "Integer overflow in the EVP_EncryptUpdate function in crypto/evp/evp_enc.c in OpenSSL before 1.0.1t and 1.0.2 before 1.0.2h allows remote attackers to cause a denial of service (heap memory corruption) via a large amount of data."
+      ],
+      [
+        "CVE-2016-2105",
+        "Integer overflow in the EVP_EncodeUpdate function in crypto/evp/encode.c in OpenSSL before 1.0.1t and 1.0.2 before 1.0.2h allows remote attackers to cause a denial of service (heap memory corruption) via a large amount of binary data."
+      ],
+      [
+        "CVE-2016-2178",
+        "The dsa_sign_setup function in crypto/dsa/dsa_ossl.c in OpenSSL through 1.0.2h does not properly ensure the use of constant-time operations, which makes it easier for local users to discover a DSA private key via a timing side-channel attack."
+      ],
+      [
+        "CVE-2016-2177",
+        "OpenSSL through 1.0.2h incorrectly uses pointer arithmetic for heap-buffer boundary checks, which might allow remote attackers to cause a denial of service (integer overflow and application crash) or possibly have unspecified other impact by leveraging unexpected malloc behavior, related to s3_srvr.c, ssl_sess.c, and t1_lib.c."
+      ],
+      [
+        "CVE-2016-6302",
+        "The tls_decrypt_ticket function in ssl/t1_lib.c in OpenSSL before 1.1.0 does not consider the HMAC size during validation of the ticket length, which allows remote attackers to cause a denial of service via a ticket that is too short."
+      ],
+      [
+        "CVE-2016-2181",
+        "The Anti-Replay feature in the DTLS implementation in OpenSSL before 1.1.0 mishandles early use of a new epoch number in conjunction with a large sequence number, which allows remote attackers to cause a denial of service (false-positive packet drops) via spoofed DTLS records, related to rec_layer_d1.c and ssl3_record.c."
+      ],
+      [
+        "CVE-2016-2180",
+        "The TS_OBJ_print_bio function in crypto/ts/ts_lib.c in the X.509 Public Key Infrastructure Time-Stamp Protocol (TSP) implementation in OpenSSL through 1.0.2h allows remote attackers to cause a denial of service (out-of-bounds read and application crash) via a crafted time-stamp file that is mishandled by the \"openssl ts\" command."
+      ],
+      [
+        "CVE-2016-2179",
+        "The DTLS implementation in OpenSSL before 1.1.0 does not properly restrict the lifetime of queue entries associated with unused out-of-order messages, which allows remote attackers to cause a denial of service (memory consumption) by maintaining many crafted DTLS sessions simultaneously, related to d1_lib.c, statem_dtls.c, statem_lib.c, and statem_srvr.c."
+      ],
+      [
+        "CVE-2016-6303",
+        "Integer overflow in the MDC2_Update function in crypto/mdc2/mdc2dgst.c in OpenSSL before 1.1.0 allows remote attackers to cause a denial of service (out-of-bounds write and application crash) or possibly have unspecified other impact via unknown vectors."
+      ]
+    ]
+  },
+  {
+    "name": "perl",
+    "version": "5.22.1",
+    "vulnerabilities": [
+      [
+        "CVE-2016-1238",
+        "(1) cpan/Archive-Tar/bin/ptar, (2) cpan/Archive-Tar/bin/ptardiff, (3) cpan/Archive-Tar/bin/ptargrep, (4) cpan/CPAN/scripts/cpan, (5) cpan/Digest-SHA/shasum, (6) cpan/Encode/bin/enc2xs, (7) cpan/Encode/bin/encguess, (8) cpan/Encode/bin/piconv, (9) cpan/Encode/bin/ucmlint, (10) cpan/Encode/bin/unidump, (11) cpan/ExtUtils-MakeMaker/bin/instmodsh, (12) cpan/IO-Compress/bin/zipdetails, (13) cpan/JSON-PP/bin/json_pp, (14) cpan/Test-Harness/bin/prove, (15) dist/ExtUtils-ParseXS/lib/ExtUtils/xsubpp, (16) dist/Module-CoreList/corelist, (17) ext/Pod-Html/bin/pod2html, (18) utils/c2ph.PL, (19) utils/h2ph.PL, (20) utils/h2xs.PL, (21) utils/libnetcfg.PL, (22) utils/perlbug.PL, (23) utils/perldoc.PL, (24) utils/perlivp.PL, and (25) utils/splain.PL in Perl 5.x before 5.22.3-RC2 and 5.24 before 5.24.1-RC2 do not properly remove . (period) characters from the end of the includes directory array, which might allow local users to gain privileges via a Trojan horse module under the current working directory."
+      ],
+      [
+        "CVE-2016-1238",
+        "(1) cpan/Archive-Tar/bin/ptar, (2) cpan/Archive-Tar/bin/ptardiff, (3) cpan/Archive-Tar/bin/ptargrep, (4) cpan/CPAN/scripts/cpan, (5) cpan/Digest-SHA/shasum, (6) cpan/Encode/bin/enc2xs, (7) cpan/Encode/bin/encguess, (8) cpan/Encode/bin/piconv, (9) cpan/Encode/bin/ucmlint, (10) cpan/Encode/bin/unidump, (11) cpan/ExtUtils-MakeMaker/bin/instmodsh, (12) cpan/IO-Compress/bin/zipdetails, (13) cpan/JSON-PP/bin/json_pp, (14) cpan/Test-Harness/bin/prove, (15) dist/ExtUtils-ParseXS/lib/ExtUtils/xsubpp, (16) dist/Module-CoreList/corelist, (17) ext/Pod-Html/bin/pod2html, (18) utils/c2ph.PL, (19) utils/h2ph.PL, (20) utils/h2xs.PL, (21) utils/libnetcfg.PL, (22) utils/perlbug.PL, (23) utils/perldoc.PL, (24) utils/perlivp.PL, and (25) utils/splain.PL in Perl 5.x before 5.22.3-RC2 and 5.24 before 5.24.1-RC2 do not properly remove . (period) characters from the end of the includes directory array, which might allow local users to gain privileges via a Trojan horse module under the current working directory."
+      ],
+      [
+        "CVE-2016-1238",
+        "(1) cpan/Archive-Tar/bin/ptar, (2) cpan/Archive-Tar/bin/ptardiff, (3) cpan/Archive-Tar/bin/ptargrep, (4) cpan/CPAN/scripts/cpan, (5) cpan/Digest-SHA/shasum, (6) cpan/Encode/bin/enc2xs, (7) cpan/Encode/bin/encguess, (8) cpan/Encode/bin/piconv, (9) cpan/Encode/bin/ucmlint, (10) cpan/Encode/bin/unidump, (11) cpan/ExtUtils-MakeMaker/bin/instmodsh, (12) cpan/IO-Compress/bin/zipdetails, (13) cpan/JSON-PP/bin/json_pp, (14) cpan/Test-Harness/bin/prove, (15) dist/ExtUtils-ParseXS/lib/ExtUtils/xsubpp, (16) dist/Module-CoreList/corelist, (17) ext/Pod-Html/bin/pod2html, (18) utils/c2ph.PL, (19) utils/h2ph.PL, (20) utils/h2xs.PL, (21) utils/libnetcfg.PL, (22) utils/perlbug.PL, (23) utils/perldoc.PL, (24) utils/perlivp.PL, and (25) utils/splain.PL in Perl 5.x before 5.22.3-RC2 and 5.24 before 5.24.1-RC2 do not properly remove . (period) characters from the end of the includes directory array, which might allow local users to gain privileges via a Trojan horse module under the current working directory."
+      ],
+      [
+        "CVE-2016-1238",
+        "(1) cpan/Archive-Tar/bin/ptar, (2) cpan/Archive-Tar/bin/ptardiff, (3) cpan/Archive-Tar/bin/ptargrep, (4) cpan/CPAN/scripts/cpan, (5) cpan/Digest-SHA/shasum, (6) cpan/Encode/bin/enc2xs, (7) cpan/Encode/bin/encguess, (8) cpan/Encode/bin/piconv, (9) cpan/Encode/bin/ucmlint, (10) cpan/Encode/bin/unidump, (11) cpan/ExtUtils-MakeMaker/bin/instmodsh, (12) cpan/IO-Compress/bin/zipdetails, (13) cpan/JSON-PP/bin/json_pp, (14) cpan/Test-Harness/bin/prove, (15) dist/ExtUtils-ParseXS/lib/ExtUtils/xsubpp, (16) dist/Module-CoreList/corelist, (17) ext/Pod-Html/bin/pod2html, (18) utils/c2ph.PL, (19) utils/h2ph.PL, (20) utils/h2xs.PL, (21) utils/libnetcfg.PL, (22) utils/perlbug.PL, (23) utils/perldoc.PL, (24) utils/perlivp.PL, and (25) utils/splain.PL in Perl 5.x before 5.22.3-RC2 and 5.24 before 5.24.1-RC2 do not properly remove . (period) characters from the end of the includes directory array, which might allow local users to gain privileges via a Trojan horse module under the current working directory."
+      ],
+      [
+        "CVE-2016-1238",
+        "(1) cpan/Archive-Tar/bin/ptar, (2) cpan/Archive-Tar/bin/ptardiff, (3) cpan/Archive-Tar/bin/ptargrep, (4) cpan/CPAN/scripts/cpan, (5) cpan/Digest-SHA/shasum, (6) cpan/Encode/bin/enc2xs, (7) cpan/Encode/bin/encguess, (8) cpan/Encode/bin/piconv, (9) cpan/Encode/bin/ucmlint, (10) cpan/Encode/bin/unidump, (11) cpan/ExtUtils-MakeMaker/bin/instmodsh, (12) cpan/IO-Compress/bin/zipdetails, (13) cpan/JSON-PP/bin/json_pp, (14) cpan/Test-Harness/bin/prove, (15) dist/ExtUtils-ParseXS/lib/ExtUtils/xsubpp, (16) dist/Module-CoreList/corelist, (17) ext/Pod-Html/bin/pod2html, (18) utils/c2ph.PL, (19) utils/h2ph.PL, (20) utils/h2xs.PL, (21) utils/libnetcfg.PL, (22) utils/perlbug.PL, (23) utils/perldoc.PL, (24) utils/perlivp.PL, and (25) utils/splain.PL in Perl 5.x before 5.22.3-RC2 and 5.24 before 5.24.1-RC2 do not properly remove . (period) characters from the end of the includes directory array, which might allow local users to gain privileges via a Trojan horse module under the current working directory."
+      ]
+    ]
+  },
+  {
+    "name": "tcpdump",
+    "version": "4.9.2",
+    "vulnerabilities": [
+      [
+        "CVE-2017-16808",
+        "tcpdump 4.9.2 has a heap-based buffer over-read related to aoe_print in print-aoe.c and lookup_emem in addrtoname.c."
+      ]
+    ]
+  }
+]

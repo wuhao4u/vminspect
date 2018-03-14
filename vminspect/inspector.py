@@ -32,6 +32,7 @@ import shutil
 import hashlib
 import logging
 import argparse
+import time
 from pathlib import Path
 from collections import OrderedDict
 from tempfile import NamedTemporaryFile
@@ -47,17 +48,42 @@ from vminspect.timeline import FSTimeline, NTFSTimeline
 from vminspect.winreg import RegistryHive, registry_root
 from vminspect.filesystem import FileSystem, hash_filesystem, posix_path
 
-
 def main():
     results = {}
     arguments = parse_arguments()
 
     logging.basicConfig(level=arguments.debug and logging.DEBUG or logging.INFO)
     logging.getLogger('requests').setLevel(logging.WARNING)
+    logging.getLogger('urllib3').setLevel(logging.WARNING)
+
 
     results = COMMANDS[arguments.name](arguments)
 
+    # file output specific code
+    workloadStartIndex = arguments.disk.find('/workload')
+    workloadString = arguments.disk[workloadStartIndex:]
+    splitlist = workloadString[1:].split('/')
+    WORKLOAD_METADATA = splitlist[0]
+    SNAPSHOT_METADATA = splitlist[1]
+    VM_ID_METADATA = splitlist[2]
+    VM_RES_ID_METADATA = splitlist[3]
+    INPUT_FILE_NAME = splitlist[4]
+    timestr = time.strftime("%Y%m%d-%H%M%S")
+    workloadFullPath = arguments.disk[workloadStartIndex:]
+
+    # TODO: change this shared folder path
+    outFilePath = "/mnt/bigdisk/scanned_results/" + INPUT_FILE_NAME + "_"+ timestr
+    outputDict = {}
+    outputDict["workload"] = WORKLOAD_METADATA
+    outputDict["snapshot"] = SNAPSHOT_METADATA
+    outputDict["vm_id"] = VM_ID_METADATA
+    outputDict["vm_res_id"] = VM_RES_ID_METADATA
+    outputDict["scanned_file"] = INPUT_FILE_NAME
+
     if results is not None:
+        outputDict["results"] = json.dumps(results)
+        with open(outFilePath,'w') as outfile:
+            json.dump(outputDict,outfile)
         print(json.dumps(results, indent=2))
 
 

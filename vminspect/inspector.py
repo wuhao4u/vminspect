@@ -47,6 +47,9 @@ from vminspect.comparator import DiskComparator
 from vminspect.timeline import FSTimeline, NTFSTimeline
 from vminspect.winreg import RegistryHive, registry_root
 from vminspect.filesystem import FileSystem, hash_filesystem, posix_path
+import pdb
+
+from celery.task import task
 
 def main():
     results = {}
@@ -57,6 +60,7 @@ def main():
     logging.getLogger('urllib3').setLevel(logging.WARNING)
 
 
+    pdb.set_trace()
     results = COMMANDS[arguments.name](arguments)
 
     # file output specific code
@@ -85,6 +89,50 @@ def main():
         with open(outFilePath,'w') as outfile:
             json.dump(outputDict,outfile)
         print(json.dumps(results, indent=2))
+
+#@app.task
+def performTask(inputArgs):
+    results = {}
+    #arguments = parse_arguments()
+    arguments = {}
+    arguments["debug"] = False
+
+    logging.basicConfig(level=arguments["debug"] and logging.DEBUG or logging.INFO)
+    logging.getLogger('requests').setLevel(logging.WARNING)
+    logging.getLogger('urllib3').setLevel(logging.WARNING)
+    arguments["concurrency"] = 50
+    arguments["disk"] = inputArgs["abs_path"]
+    arguments["url"] = inputArgs["cve_url"]
+    #arguments["disk"]
+    #arguments["url"]
+    results = vulnscan_command_cel(arguments)
+    # file output specific code
+    workloadStartIndex = arguments["disk"].find('/workload')
+    workloadString = arguments["disk"][workloadStartIndex:]
+    splitlist = workloadString[1:].split('/')
+    WORKLOAD_METADATA = splitlist[0]
+    SNAPSHOT_METADATA = splitlist[1]
+    VM_ID_METADATA = splitlist[2]
+    VM_RES_ID_METADATA = splitlist[3]
+    INPUT_FILE_NAME = splitlist[4]
+    timestr = time.strftime("%Y%m%d-%H%M%S")
+    workloadFullPath = arguments["disk"][workloadStartIndex:]
+
+    # TODO: change this shared folder path
+    outFilePath = "/mnt/bigdisk/scanned_results/" + INPUT_FILE_NAME + "_"+ timestr
+    outputDict = {}
+    outputDict["workload"] = WORKLOAD_METADATA
+    outputDict["snapshot"] = SNAPSHOT_METADATA
+    outputDict["vm_id"] = VM_ID_METADATA
+    outputDict["vm_res_id"] = VM_RES_ID_METADATA
+    outputDict["scanned_file"] = INPUT_FILE_NAME
+
+    if results is not None:
+        outputDict["results"] = json.dumps(results)
+        with open(outFilePath,'w') as outfile:
+            json.dump(outputDict,outfile)
+        print(json.dumps(results, indent=2))
+
 
 
 def list_files_command(arguments):
@@ -179,6 +227,11 @@ def vtscan_command(arguments):
         vtscanner.scan(filetypes=filetypes)
         # return [r._asdict() for r in vtscanner.scan(filetypes=filetypes)]
         return []
+
+def vulnscan_command_cel(arguments):
+    print("calling vulnscan")
+    with VulnScanner(arguments["disk"], arguments["url"]) as vulnscanner:
+        return [r._asdict() for r in vulnscanner.scan(arguments["concurrency"])]
 
 
 def vulnscan_command(arguments):
@@ -447,4 +500,5 @@ COMMANDS = {'list': list_files_command,
 
 
 if __name__ == '__main__':
+    app.tasks.register(vulnscan_command_cel())
     main()

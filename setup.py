@@ -47,7 +47,8 @@ setup(
     install_requires=[
         'pebble>=4.0',
         'requests',
-        'python-evtx'
+        'python-evtx',
+        'pytest'
     ],
     entry_points = {
         'console_scripts': [

@@ -32,24 +32,26 @@ import shutil
 import hashlib
 import logging
 import argparse
+import time
+import os
 from pathlib import Path
 from collections import OrderedDict
 from tempfile import NamedTemporaryFile
 
-from vminspect.vtscan import VTScanner
+#from vminspect.vtscan import VTScanner
+from vtscan import VTScanner
 from vminspect.usnjrnl import usn_journal
 from vminspect.winevtx import WinEventLog
-from vminspect.vulnscan import VulnScanner
+#from vminspect.vulnscan import VulnScanner
+from vulnscan import VulnScanner
 from vminspect.comparator import DiskComparator
 from vminspect.timeline import FSTimeline, NTFSTimeline
 from vminspect.winreg import RegistryHive, registry_root
 from vminspect.filesystem import FileSystem, hash_filesystem, posix_path
 
-
 def main():
     results = {}
     arguments = parse_arguments()
-    print("HERE")
 
     logging.basicConfig(level=arguments.debug and logging.DEBUG or logging.INFO)
     logging.getLogger('requests').setLevel(logging.WARNING)
@@ -57,15 +59,48 @@ def main():
 
     results = COMMANDS[arguments.name](arguments)
 
-    #if results is not None:
-        #print(json.dumps(results, indent=2))
+    # file output specific code
+    workloadStartIndex = arguments.disk.find('/workload')
+    workloadString = arguments.disk[workloadStartIndex:]
+    splitlist = workloadString[1:].split('/')
+    WORKLOAD_METADATA = splitlist[0]
+    SNAPSHOT_METADATA = splitlist[1]
+    VM_ID_METADATA = splitlist[2]
+    VM_RES_ID_METADATA = splitlist[3]
+    INPUT_FILE_NAME = splitlist[4]
+    timestr = time.strftime("%Y%m%d-%H%M%S")
 
-    print("EOF")
+    # find path of snapshot__ folder
+    snapshotPath = arguments.disk[:arguments.disk.find("/vm_id")]
+
+    # create /scans folder inside snapshot directory if not there
+    outFilePath = snapshotPath + "/scans/"
+    if not os.path.exists(outFilePath):
+        try:
+            os.makedirs(outFilePath)
+        except OSError as err:
+            raise err
+
+    outFilePath = outFilePath +  INPUT_FILE_NAME + "_"+ timestr
+
+    # prepare dict to be written to file
+    outputDict = {}
+    outputDict["workload"] = WORKLOAD_METADATA
+    outputDict["snapshot"] = SNAPSHOT_METADATA
+    outputDict["vm_id"] = VM_ID_METADATA
+    outputDict["vm_res_id"] = VM_RES_ID_METADATA
+    outputDict["scanned_file"] = INPUT_FILE_NAME
+
+    if results is not None:
+        # embed json results in dict
+        outputDict["results"] = json.dumps(results)
+        with open(outFilePath,'w+') as outfile:
+            json.dump(outputDict,outfile)
+        print(json.dumps(results, indent=2))
 
 
 def list_files_command(arguments):
-    return list_files(arguments.disk, identify=arguments.identify,
-                      size=arguments.size)
+    return list_files(arguments.disk, identify=arguments.identify, size=arguments.size)
 
 
 def list_files(disk, identify=False, size=False):
@@ -147,14 +182,19 @@ def extract_registry(filesystem, path):
 
 
 def vtscan_command(arguments):
+    print("I got your arguments")
+    print(arguments)
     with VTScanner(arguments.disk, arguments.apikey) as vtscanner:
         vtscanner.batchsize = arguments.batchsize
         filetypes = arguments.types and arguments.types.split(',') or None
 
-        return [r._asdict() for r in vtscanner.scan(filetypes=filetypes)]
+        vtscanner.scan(filetypes=filetypes)
+        # return [r._asdict() for r in vtscanner.scan(filetypes=filetypes)]
+        return []
 
 
 def vulnscan_command(arguments):
+    print("calling vulnscan")
     with VulnScanner(arguments.disk, arguments.url) as vulnscanner:
         return [r._asdict() for r in vulnscanner.scan(arguments.concurrency)]
 
@@ -401,6 +441,12 @@ def parse_arguments():
     return parser.parse_args()
 
 
+# list all the files contained within a disk image
+# Compare two disk images
+# Query Virustotal regarding the content of a disk.
+# Query a CVE database for vulnerable applications.
+# Extract event timelines of NTFS disks. Installation of 7Zip on Windows 7.
+# Parse Windows Event Log files.
 COMMANDS = {'list': list_files_command,
             'compare': compare_command,
             'registry': registry_command,

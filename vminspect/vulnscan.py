@@ -29,7 +29,6 @@
 
 
 import logging
-import requests
 from collections import namedtuple
 from concurrent.futures import ThreadPoolExecutor
 
@@ -44,13 +43,11 @@ class VulnScanner:
     a CVE DB for vulnerabilities.
 
     disk must contain the path of a valid disk image.
-    url must be a valid URL to a REST vulnerability service.
 
     """
-    def __init__(self, disk, url, cvefeed):
+    def __init__(self, disk, cvefeed):
         self._disk = disk
         self._filesystem = None
-        self._url = url.rstrip('/')
         self._cvefeed = load_local(cvefeed)['CVE_Items']
         self.logger = logging.getLogger(
             "%s.%s" % (self.__module__, self.__class__.__name__))
@@ -90,33 +87,40 @@ class VulnScanner:
         applications = self.applications()
         #print("#####application versions: ######")
         #for application in applications:
-        #    print(application.name + " : " + application.version + " : " + application.publisher)
+            #print(application.name + " : " + application.version + " : " + application.publisher)
 
         with ThreadPoolExecutor(max_workers=concurrency) as executor:
             results = executor.map(self.query_vulnerabilities,
-                                   self.applications())
-        
+                                   self.applications()) 
         for report in results:
+            #TODO: implement output design here for each application in correct json format
             application, vulnerabilities = report                              
-            vulnerabilities = list(lookup_vulnerabilities(application.version,
-                                                          vulnerabilities))
+            #vulnerabilities = list(lookup_vulnerabilities(application.version,
+            #                                              vulnerabilities))
                 
             if vulnerabilities:
-                full_vulnerabilities = [FullVuln(v.id, v.summary, self.query_cve_info(v.id)) for v in vulnerabilities]
+            #    full_vulnerabilities = [FullVuln(v.id, v.summary, self.query_cve_info(v.id)) for v in vulnerabilities]
                 yield VulnApp(application.name,
                               application.version,
-                              full_vulnerabilities)
+                              vulnerabilities)
 
     def query_vulnerabilities(self, application):
         self.logger.debug("Quering %s vulnerabilities.", application.name)
 
         name = application.name.lower()
-        url = '/'.join((self._url, name, name))
-        
-        response = requests.get(url)
-        response.raise_for_status()
-
-        return application, response.json()
+        version = application.version
+        results = []
+        for cve in self._cvefeed:
+            vendor_list = cve['cve']['affects']['vendor']['vendor_data']
+            for vendor in vendor_list:
+                for product in vendor['product']['product_data']: 
+                    if product['product_name'].lower() == name:
+                        product_versions_list = product['version']['version_data']
+                        if {'version_value' : version} in product_versions_list:
+                            #print(name + ":" + cve['cve']['CVE_data_meta']['ID'] + ":" + version)
+                            results.append(cve)
+        return application, results
+            
 
     def query_cve_info(self, cve_id):
         # query local cve database

@@ -20,7 +20,7 @@ def dl_remote(local_path):
         with open(local_path + filename, 'wb+') as f:
             for chunk in r_file:
                 f.write(chunk)
-            print(local_path + filename)
+     #       print(local_path + filename)
         archive = zipfile.ZipFile(local_path + filename, 'r')
         archive.extractall(local_path)
         archive.close()
@@ -37,8 +37,8 @@ def load_local(cvepath):
         for k,v in file_dict.items():
             cve_dict[k] += v
         jsonfile.close()
-    #print([item['cve']['CVE_data_meta']['ID'] for item in cve_dict['CVE_Items']])
-    print([item['impact'] for item in cve_dict['CVE_Items'] 
-            if item['cve']['CVE_data_meta']['ID']=='CVE-2017-3738'])
+    ##print([item['cve']['CVE_data_meta']['ID'] for item in cve_dict['CVE_Items']])
+    #print([item['impact'] for item in cve_dict['CVE_Items'] 
+    #        if item['cve']['CVE_data_meta']['ID']=='CVE-2017-3738'])
     return cve_dict
 

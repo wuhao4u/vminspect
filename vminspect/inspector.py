@@ -38,11 +38,11 @@ from pathlib import Path
 from collections import OrderedDict
 from tempfile import NamedTemporaryFile
 
-#from vminspect.vtscan import VTScanner
+from vminspect.vtscan import VTScanner
 from vtscan import VTScanner
 from vminspect.usnjrnl import usn_journal
 from vminspect.winevtx import WinEventLog
-#from vminspect.vulnscan import VulnScanner
+from vminspect.vulnscan import VulnScanner
 from vulnscan import VulnScanner
 from vminspect.comparator import DiskComparator
 from vminspect.timeline import FSTimeline, NTFSTimeline

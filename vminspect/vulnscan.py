@@ -109,7 +109,6 @@ class VulnScanner:
 
         name = application.name.lower()
         url = '/'.join((self._url, name, name))
-        # print("#####" + url + "######")
 
         response = requests.get(url)
         response.raise_for_status()

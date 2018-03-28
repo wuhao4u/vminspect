@@ -48,7 +48,6 @@ from vminspect.winreg import RegistryHive, registry_root
 from vminspect.filesystem import FileSystem, hash_filesystem, posix_path
 
 from load_cve import dl_remote
-import pdb
 import time
 import os
 
@@ -65,17 +64,29 @@ def main():
     # file output specific code
     outputDict = {}
     workloadStartIndex = arguments.disk.find('/workload')
-    workloadString = arguments.disk[workloadStartIndex:]
-    splitlist = workloadString[1:].split('/')
-    WORKLOAD_METADATA = splitlist[0]
-    SNAPSHOT_METADATA = splitlist[1]
-    VM_ID_METADATA = splitlist[2]
-    VM_RES_ID_METADATA = splitlist[3]
-    INPUT_FILE_NAME = splitlist[4]
+    INPUT_FILE_NAME = arguments.disk.replace("/","_")
     timestr = time.strftime("%Y%m%d-%H%M%S")
+    if workloadStartIndex != -1 :
+        workloadString = arguments.disk[workloadStartIndex:]
+        splitlist = workloadString[1:].split('/')
+        WORKLOAD_METADATA = splitlist[0]
+        SNAPSHOT_METADATA = splitlist[1]
+        VM_ID_METADATA = splitlist[2]
+        VM_RES_ID_METADATA = splitlist[3]
+        INPUT_FILE_NAME = splitlist[4]
+        # prepare dict to be written to file
+        outputDict["workload_id"] = WORKLOAD_METADATA.split("workload_")[1]
+        outputDict["snapshot_id"] = SNAPSHOT_METADATA.split("snapshot_")[1]
+        outputDict["vm_id"] = VM_ID_METADATA.split("vm_id_")[1]
+        outputDict["vm_res_id"] = VM_RES_ID_METADATA.split("vm_res_id_")[1]
+        outputDict["scanned_file"] = INPUT_FILE_NAME
 
-    # find path of snapshot__ folder
-    snapshotPath = arguments.disk[:arguments.disk.find("/vm_id")]
+        # find path of snapshot__ folder
+        snapshotPath = arguments.disk[:arguments.disk.find("/vm_id")]
+    else:
+        # else scan was called from outside trilio folder structure, so
+        # scans folder is created in current directory
+        snapshotPath = os.getcwd()
 
     # create /scans folder inside snapshot directory if not there
     outFilePath = snapshotPath + "/scans/"
@@ -84,22 +95,12 @@ def main():
             os.makedirs(outFilePath)
         except OSError as err:
             raise err
-
     outFilePath = outFilePath +  INPUT_FILE_NAME + "_"+ timestr
-
-    # prepare dict to be written to file
-    outputDict["workload_id"] = WORKLOAD_METADATA.split("workload_")[1]
-    outputDict["snapshot_id"] = SNAPSHOT_METADATA.split("snapshot_")[1]
-    outputDict["vm_id"] = VM_ID_METADATA.split("vm_id_")[1]
-    outputDict["vm_res_id"] = VM_RES_ID_METADATA.split("vm_res_id_")[1]
-    outputDict["scanned_file"] = INPUT_FILE_NAME
 
     if results is not None:
         # embed json results in dict
         resultDict  = {"results":results}
-        #outputDict["results"] = json.dumps(results)
         outputDict.update(resultDict)
-        pdb.set_trace()
         with open(outFilePath,'w+') as outfile:
             outfile.write(json.dumps(outputDict, indent=4))
         print(json.dumps(results, indent=2))

@@ -47,14 +47,12 @@ from vminspect.timeline import FSTimeline, NTFSTimeline
 from vminspect.winreg import RegistryHive, registry_root
 from vminspect.filesystem import FileSystem, hash_filesystem, posix_path
 
-from load_cve import dl_remote
-
 
 def main():
     results = {}
     arguments = parse_arguments()
 
-    logging.basicConfig(level=arguments.debug and logging.DEBUG or logging.INFO)
+    logging.basicConfig(level=arguments.debug and logging.DEBUG or logging.ERROR)
     logging.getLogger('requests').setLevel(logging.WARNING)
 
     results = COMMANDS[arguments.name](arguments)
@@ -152,20 +150,14 @@ def vtscan_command(arguments):
         vtscanner.batchsize = arguments.batchsize
         filetypes = arguments.types and arguments.types.split(',') or None
 
-        #vtscanner.scan(filetypes=filetypes)
+        vtscanner.scan(filetypes=filetypes)
         return [r._asdict() for r in vtscanner.scan(filetypes=filetypes)]
         # return []
 
 
 def vulnscan_command(arguments):
-    if arguments.cvefeed is None and arguments.remote is False:
-        raise ValueError('Specify local CVE data feed path or remote download flag -r --remote and local path to save to')
-    if arguments.remote:
-        dl_remote(arguments.cvefeed)
-        print("CVE data feed downloaded")
-
-    with VulnScanner(arguments.disk, arguments.cvefeed) as vulnscanner:        
-        return [r._asdict() for r in vulnscanner.scan(arguments.concurrency)]
+    with VulnScanner(arguments['disk'], arguments['url']) as vulnscanner:
+        return [r._asdict() for r in vulnscanner.scan(arguments['concurrency'])]
 
 
 def usnjrnl_command(arguments):
@@ -359,21 +351,13 @@ def parse_arguments():
         '-t', '--types', type=str, default='',
         help='comma separated list of file types (REGEX) to be scanned')
 
-    # vulnscan arguments:
-    # changes made here to download CVE db feed from NVD
     vulnscan_parser = subparsers.add_parser(
         'vulnscan', help='Scans a disk and queries VBE.')
-    #vulnscan_parser.add_argument('url', type=str,
-    #                             help='URL to vulnerabilities DB')
-    # options for downloading or reading (local) CVE database:
-    vulnscan_parser.add_argument('cvefeed', type=str,
-            help='local path to CVE data feeds in json format or path to save downloaded feed')
+    vulnscan_parser.add_argument('url', type=str,
+                                 help='URL to vulnerabilities DB')
     vulnscan_parser.add_argument('disk', type=str, help='path to disk image')
     vulnscan_parser.add_argument('-c', '--concurrency', type=int, default=1,
-            help='amount of concurrent queries against DB')
-    # options for downloading CVE database:   
-    vulnscan_parser.add_argument('-r', '--remote', action='store_true', default=False,
-            help='download CVE data feed from NVD at https://nvd.nist.gov/vuln/data-feeds#JSON_FEED')
+                                 help='amount of concurrent queries against DB')
 
     usnjrnl_parser = subparsers.add_parser(
         'usnjrnl', help='Parses the Update Sequence Number Journal file.')

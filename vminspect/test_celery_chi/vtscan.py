@@ -181,6 +181,7 @@ def vtquery(apikey, checksums):
 #    print(data)
     
     request_url = VT_REPORT_URL + "?" + "apikey=" + apikey + "&resource=" + ",".join(checksums)
+    print(request_url)
 
     while 1:
         #response = requests.post(VT_REPORT_URL, data=data)
@@ -188,7 +189,7 @@ def vtquery(apikey, checksums):
         response.raise_for_status()
 
         if response.status_code == 200:
-            print(response.json())
+#            print(response.json())
             return response.json()
         elif response.status_code == 204:
             logging.debug("API key request rate limit reached, throttling.")

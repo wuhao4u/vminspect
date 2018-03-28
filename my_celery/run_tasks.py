@@ -8,5 +8,5 @@ if __name__ == '__main__':
     args = parser.parse_args()
     images = args.images
     for image in images.split(","):
-        vminspect_scan.delay(images.strip())
+        vminspect_scan.delay(image.strip())
 
